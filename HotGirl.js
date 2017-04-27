@@ -8,10 +8,12 @@ class HotGirl {
         this.like = like;
         this.dislike = dislike;
     }
-    like() {
-
+    likeImage() {
+        const sql = 'UPDATE public."HotGirl" SET "like"="like" + 1 WHERE id = $1 RETURNING "like"';
+        return query(sql, [this.id])
+        .then(result => result.rows[0].like);
     }
-    dislike() {
+    dislikeImage() {
 
     }
     getInfo() {

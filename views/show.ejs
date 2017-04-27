@@ -13,21 +13,32 @@
                 justify-content: space-between
             }
         </style>
+        <script src="jquery.js"></script>
+        <script>
+            $(document).ready(() => {
+                $('#btnAjax').click(() => {
+                    $.get('/likes/1', data => {
+                        console.log(data);
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <div>
             <h3><%= name %></h3>
             <div class="div-control">
-                <a href="#">Trở lại</a>
-                <a href="#">Tiếp</a>
+                <a href="/show/<%= id - 1 %>">Trở lại</a>
+                <a href="/show/<%= id + 1 %>">Tiếp</a>
             </div>
             <hr />
             <img src="<%- image %>" width="300" height="400">
             <hr />
             <div class="div-control">
-                <a href="#"><%= like %> Like</a>
-                <a href="#"><%= dislike %> Dislike</a>
+                <a href="/like/<%= id %>"><%= like %> Like</a>
+                <a href="/like/<%= id %>"><%= dislike %> Dislike</a>
             </div>
+            <button id="btnAjax">AJAX</button>
         </div>
     </body>
 </html>
