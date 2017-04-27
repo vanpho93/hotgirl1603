@@ -1,4 +1,5 @@
 const express = require('express');
+const HotGirl = require('./HotGirl');
 
 const app = express();
 app.listen(3000, () => console.log('Server started'));
@@ -9,5 +10,8 @@ app.set('views', './views');
 app.get('/', (req, res) => res.render('home'));
 
 app.get('/show/:id', (req, res) => {
-    //res send info
+    const { id } = req.params;
+    const hotGirl = new HotGirl(id);
+    hotGirl.getInfo()
+    .then(girl => res.render('show', girl));
 });

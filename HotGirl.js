@@ -1,9 +1,10 @@
 const query = require('./db');
 
 class HotGirl {
-    constructor(id, name, like, dislike) {
+    constructor(id, name, image, like, dislike) {
         this.id = id;
         this.name = name;
+        this.image = image;
         this.like = like;
         this.dislike = dislike;
     }
