@@ -7,3 +7,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/', (req, res) => res.render('home'));
+
+app.get('/show/:id', (req, res) => {
+    //res send info
+});
