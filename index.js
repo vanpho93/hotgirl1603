@@ -25,6 +25,14 @@ app.get('/like/:id', (req, res) => {
     .catch(() => res.send('Khong tim thay!'));
 });
 
+app.get('/dislike/:id', (req, res) => {
+    const { id } = req.params;
+    const hotGirl = new HotGirl(id);
+    hotGirl.dislikeImage()
+    .then(() => res.redirect(`/show/${id}`))
+    .catch(() => res.send('Khong tim thay!'));
+});
+
 app.get('/likes/:id', (req, res) => {
     const { id } = req.params;
     const hotGirl = new HotGirl(id);

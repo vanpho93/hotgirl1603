@@ -16,9 +16,10 @@
         <script src="jquery.js"></script>
         <script>
             $(document).ready(() => {
-                $('#btnAjax').click(() => {
+                $('#a-like').click((e) => {
+                    e.preventDefault();
                     $.get('/likes/1', data => {
-                        console.log(data);
+                        $('#a-like').text(`${data} Like`);
                     });
                 });
             });
@@ -35,8 +36,8 @@
             <img src="<%- image %>" width="300" height="400">
             <hr />
             <div class="div-control">
-                <a href="/like/<%= id %>"><%= like %> Like</a>
-                <a href="/like/<%= id %>"><%= dislike %> Dislike</a>
+                <a id="a-like" href="#"><%= like %> Like</a>
+                <a href="/dislike/<%= id %>"><%= dislike %> Dislike</a>
             </div>
             <button id="btnAjax">AJAX</button>
         </div>

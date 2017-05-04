@@ -14,7 +14,9 @@ class HotGirl {
         .then(result => result.rows[0].like);
     }
     dislikeImage() {
-
+        const sql = 'UPDATE public."HotGirl" SET "dislike"="dislike" + 1 WHERE id = $1 RETURNING "dislike"';
+        return query(sql, [this.id])
+        .then(result => result.rows[0].dislike);
     }
     getInfo() {
         const sql = 'SELECT * FROM "HotGirl" WHERE id = $1';
